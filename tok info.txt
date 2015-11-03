@@ -1,0 +1,270 @@
+[RACE]
+
+Elvish - The advantage of this race is that their archery level starts at 2
+
+Human - The advantage of this race is that their forestry/angling level starts at 2
+
+Dwarf - The advantage of this race is that thier prospecting level starts at 2
+
+Halfling - The advantage of this race is that they can create poison for their weapons/arrows with berries found around ToK
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[GENDER]
+
+Male - Women will try to sell sex to you in town
+
+Female - Men will attempt to swoon you in town
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMBAT] Skill[attack,archery,magik]
+
+Attack - xp given every time you kill a foe with hand2hand combat
+	*Determines what grade of hand2hand weapon you can hold:
+		Level 1: Steel                                   	    //Chance to hit = 33/100
+		Level 2: Obsidian                                	    //chance to hit = 50/100
+		Level 3: Mithril                  	            	    //chance to hit = 66/100
+		Level 4: Diamond                                 	    //chance to hit = 75/100
+		Level 5: Mystical                                	    //chance to hit = 90/100
+		
+Archery - xp given when a bow is created or a foe is killed with a bow/projectile
+	*Determines what grade of bow/arrows you can hold/use:
+		Level 1: Longbow/Steel arrows                               //chance to hit = 55/100
+		Level 2: Obsidian shortbow/up to Obsidian arrows            //chance to hit = 66/100
+		Level 3: Mithril shortbow/up to Mithril arrows              //chance to hit = 77/100
+		Level 4: Diamond longbow/up to Diamond arrows               //chance to hit = 88/100
+		Level 5: ElfGod longbow/Infinite ammo (elf only)            //chance to hit = 99/100
+
+Time - xp given whenever a magical item is created or a foe is killed with a time spell
+	*Determines what spells you can use:
+		Level 1: Haste/enchant steel 1.1                            //Allows x2 attacks per turn for 3 turns
+		Level 2: Time Stop/enchant obsidian 1.2			    //Slows time to the extreme except at your position for 3 turns
+		Level 3: AntiTime/enchant mithril 1.3                       //Spawn an antitimeline upon an enemy, tearing a temporary hole in spacetime continuum
+		Level 4: Event Horizon/enchant diamond 1.4                  //Spawns a temporary, miniature black hole just long enough to suck your enemy in	
+		Level 5: Fold 6th Dimension/enchant mystical 1.5       	    //Create any situation in the 3rd dimension
+
+Strength Modification -
+
+Your Hit = [Random integer between strMod and strMod + strMod (Max hit)] * enchantment
+(weapon type/enchantment determines str mod)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[SKILLS] Array of Skill Objects
+
+Forestry - xp given every time the player plants something or does something forest related
+	*Determines what wood you can cut:
+		Level 1: Oak (Steel arrow shafts)
+		Level 2: Ash (Obsidian arrow shafts)
+		Level 3: Maple (Mithril arrow shafts)
+		Level 4: Hickory (Diamond arrow shafts)
+		Level 5: Mystical (Mystical arrows shafts) (Human only)
+
+Prospecting - xp given every time a mineral/gem is obtained
+	*Determines what ores you can collect/identify
+		Level 1: Iron Ore (Steel stuff)
+		Level 2: Obsidian (Obsidian stuff)
+		Level 3: Mithril (Mithril stuff)
+		Level 4: Diamond (Diamond stuff)
+		Level 5: Mystical (Mystical stuff) (Dwarf only)
+
+Angling - xp given every time a fish is caught
+	*Determines what fish can be caught
+		Level 1: Pike (Heals 1HP ea)
+		Level 2: Salmon (Heals 3HP ea)
+		Level 3: Bass (Heals 5HP ea)
+		Level 4: Eel (Heals 7HP ea)
+		Level 5: Mystical (Heals 10HP ea) (Human only)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[ITEMS] Objects
+
+0 = hand2hand
+1 = bow
+2 = arrows
+3 = armour
+
+
+0 Rod       strMod 0
+0 Hatchet   strMod 1
+0 Daggers   strMod 2
+0 Swords    strMod 3
+0 Mace      strMod 3
+0 Katana    strMod 4
+1 ShortBow  rStrMod 0
+1 LongBow   rStrMod 0
+2 Arrows    rStrMod 2
+3 Armour    strMod 0
+
+Low-Grade +0 strMod
+Steel +1 strMod
+Obsidian +2 strMod
+Mithril +3 strMod
+Diamond +4 strMod
+Mystical +5 strMod
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[PLACES] methods -> (x amount)objects -> (x amount)data
+
+Tutorial(unknown wood, one time only)-
+
+	Monsters:
+		*None
+	
+	NPCs:
+		*None
+	Items:
+		*Poison (Halfling only)
+		*Makeshift Fishing Rod (Human only)
+		*Makeshift Hatchet (Human only)
+		*Coal (Dwarf only)
+		*Iron Ore (Dwarf only)
+
+Town-
+	Monsters:
+		*None
+
+	NPCs:
+		*Cook
+		*Smithy
+		*Store
+		*Temple
+		*Fletcher
+	Items:
+		! = Cook items								
+		!Cooked Pike            			   
+		!Cooked Salmon          
+		!Cooked Bass            
+		!Cooked Eel             
+		!Cooked Mystical Fish   
+		
+		@ = Smithy items
+		@Steel
+		-Dagger
+		-ArrowHeads(10)
+		-Armour
+		@Obsidian
+		-Dagger
+		-ShortBow
+		-Sword
+		-ArrowHeads(10)
+		-Armour
+		@Mithril
+		-Dagger
+		-ShortBow
+		-Mace
+		-ArrowHeads(10)
+		-Armour
+		@Diamond
+		-Dagger
+		-Longbow
+		-ArrowHeads(10)
+		-Armour
+		@Mystical
+		-Katana
+		-ArrowHeads(10)
+		-Armour
+
+		# = Inn items
+		#Bedroom (HP restored)
+		
+		$ = Temple items
+		$HP Potion
+		$strMod Potion
+		$rStrMod Potion
+
+		% = Fletcher items
+		%Longbow (Free)
+
+Forest-
+	Monsters:
+		*Innocent Forest Spirit(lv1)
+		*Giant Spider(lv1)
+		*Bear (lv2)
+		
+	NPCs:
+
+	Items:
+
+Mountains-
+	Monsters:
+		*
+		*Wolf (lv2)
+	NPCs:
+
+	Items:
+
+Valley-
+	Monsters:
+	NPCs:
+	Items:
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[COMMANDS] methods within if statements within methods? not sure how this should be tackled...
+
+/charinfo:
+
+System.out.println(character.name);
+System.out.println(character.race);
+System.out.println(character.gender);
+System.out.println("Current level:" + character.level);
+System.out.println("XP: " + character.XP);
+
+/stats:
+			
+System.out.println("Your Attack level is: " + character.combatStats[0].level);
+System.out.println("Your Archery level is: " + character.combatStats[1].level);
+System.out.println("Your Magik level is: " + character.combatStats[2].level);
+System.out.println("Your Forestry level is: " + character.skillStats[0].level);
+System.out.println("Your Prospecting level is: " + character.skillStats[1].level);
+System.out.println("Your Angling level is: " + character.skillStats[2].level);
+
+/inventory /inven /bag
+
+System.out.println(Arrays.toString(player.inven));
+
+/equip
+
+public static equip(Player character, Item Item) {
+
+if(Item.type == 0) {
+
+	character.equipped. Item;
+
+}
+
+if(Item.type == 1) {
+
+	character.equipped[1] = Item;
+
+}
+
+if(Item.type == 2) {
+
+	character.equipped[2] = Item;
+
+}
+
+if(Item.type == 3) {
+
+	character.equipped[3] = Item;
+
+}
+
+return character;
+
+}
+
+/viewequippeditems
+
+
+
+[STORY]
+
+You are ToK, a being who seems normal, but is actually a timeshifter. A timeshifter is someone who uses their mind to manipulate thier current timeline. They understand the true nature of time.
+
+“Clocks slay time... time is dead as long as it is being clicked off by little wheels; only when the clock stops does time come to life.” - William Faulkner
